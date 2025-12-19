@@ -14,11 +14,9 @@ max_seq_length = 2048
 dtype = None
 load_in_4bit = True
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="/root/autodl-tmp/codellama-7b-bnb-4bit",
-    max_seq_length=max_seq_length,
-    dtype=dtype,
-    load_in_4bit=load_in_4bit,
-    token="https://hf-mirror.com"
+    max_seq_length = 4096,
+    dtype = torch.float16,
+    load_in_4bit = True,   # strongly recommended
 )
 
 def load_big_code_clone():
