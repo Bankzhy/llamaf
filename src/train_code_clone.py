@@ -15,7 +15,7 @@ dtype = None
 load_in_4bit = True
 model, tokenizer = FastLanguageModel.from_pretrained(
     max_seq_length = 4096,
-    dtype = torch.float16,
+    dtype = dtype,
     load_in_4bit = True,   # strongly recommended
 )
 
