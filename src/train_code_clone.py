@@ -43,7 +43,11 @@ def load_big_code_clone():
 
     with open(file, encoding='ISO-8859-1') as f:
         lines = f.readlines()
-        for line in tqdm(lines):
+        for index,line in tqdm(enumerate(lines)):
+
+            if index > 350000:
+                break
+
             try:
                 ll = line.split("\t")
                 if ll[0] not in json_data.keys() or ll[1] not in json_data.keys():
