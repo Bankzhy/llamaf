@@ -8,6 +8,17 @@ from trl import SFTTrainer
 from transformers import TrainingArguments
 from datasets import load_dataset, Dataset
 
+# 加载模型
+max_seq_length = 2048
+dtype = None
+load_in_4bit = True
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="codellama:7b-instruct",
+    max_seq_length=max_seq_length,
+    dtype=dtype,
+    load_in_4bit=load_in_4bit,
+    token="https://hf-mirror.com"
+)
 
 def load_big_code_clone():
     split = "train"
@@ -89,19 +100,6 @@ if __name__ == '__main__':
     # dataset = load_big_code_clone()
     dataset = Dataset.from_pandas(pd.DataFrame(data=load_big_code_clone()))
     dataset = dataset.map(formatting_prompts_func, batched=True, )
-
-    # 加载模型
-    max_seq_length = 2048
-    dtype = None
-    load_in_4bit = True
-    model, tokenizer = FastLanguageModel.from_pretrained(
-        model_name="codellama:7b-instruct",
-        max_seq_length=max_seq_length,
-        dtype=dtype,
-        load_in_4bit=load_in_4bit,
-        token="https://hf-mirror.com"
-    )
-
 
 
     # 设置训练参数
