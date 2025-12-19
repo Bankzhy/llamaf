@@ -7,15 +7,14 @@ import torch
 from trl import SFTTrainer
 from transformers import TrainingArguments
 from datasets import load_dataset, Dataset
-import os
-os.environ['UNSLOTH_USE_MODELSCOPE'] = '1'
+
 
 # 加载模型
 max_seq_length = 2048
 dtype = None
 load_in_4bit = True
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="unsloth/codellama-7b-bnb-4bit",
+    model_name="/root/autodl-tmp/codellama-7b-bnb-4bit",
     max_seq_length=max_seq_length,
     dtype=dtype,
     load_in_4bit=load_in_4bit,
