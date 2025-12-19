@@ -84,7 +84,7 @@ def load_big_code_clone():
                     continue
 
                 codes_1.append(json_data[ll[0]]["code"])
-                codes_2.append(json_data[ll[0]]["code"])
+                codes_2.append(json_data[ll[1]]["code"])
                 label = ll[2].replace("\n", "")
                 labels.append(int(label))
             except Exception as e:
@@ -110,10 +110,16 @@ def compute_valid_metrics(predictions, labels):
 if __name__ == '__main__':
     codes_1, codes_2, labels = load_big_code_clone()
     predictions = []
+    plabels = []
     for code1, code2, label in tqdm(zip(codes_1, codes_2, labels)):
-        predict=code_clone(code1, code2)
-        predictions.append(predict)
-    compute_valid_metrics(predictions, labels)
+        try:
+            predict=code_clone(code1, code2)
+            predictions.append(predict)
+            plabels.append(label)
+        except Exception as e:
+            print(e)
+            continue
+    compute_valid_metrics(predictions, plabels)
 
 
 
