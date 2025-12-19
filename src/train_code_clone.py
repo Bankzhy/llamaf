@@ -14,6 +14,7 @@ max_seq_length = 2048
 dtype = None
 load_in_4bit = True
 model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="/root/autodl-tmp/codellama-7b-bnb-4bit",
     max_seq_length = 4096,
     dtype = dtype,
     load_in_4bit = True,   # strongly recommended
@@ -146,8 +147,8 @@ if __name__ == '__main__':
     trainer.train()
 
     # 保存微调模型
-    model.save_pretrained("lora_model")
+    model.save_pretrained("lora_model_1")
 
     # 合并模型，保存为16位hf
-    model.save_pretrained_merged("outputs", tokenizer, save_method="merged_16bit", )
+    # model.save_pretrained_merged("outputs", tokenizer, save_method="merged_16bit", )
 
