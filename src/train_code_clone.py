@@ -15,7 +15,7 @@ dtype = None
 load_in_4bit = True
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name="codellama/CodeLlama-7b-hf",
-    max_seq_length = 4096,
+    max_seq_length = None,
     dtype = dtype,
     load_in_4bit = True,   # strongly recommended
 )
