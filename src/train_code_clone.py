@@ -86,7 +86,8 @@ pass
 
 if __name__ == '__main__':
     # codes_1, codes_2, labels = load_big_code_clone()
-    dataset = load_big_code_clone()
+    # dataset = load_big_code_clone()
+    dataset = Dataset.from_pandas(pd.DataFrame(data=load_big_code_clone()))
     dataset = dataset.map(formatting_prompts_func, batched=True, )
 
     # 加载模型
